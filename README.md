@@ -26,3 +26,6 @@ Compile:
 
 or
       gcc phoneBook.c -o phoneBook -lsqlite3
+
+
+(Only tested on linux and arm64)
