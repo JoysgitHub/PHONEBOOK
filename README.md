@@ -20,9 +20,9 @@ Install sqlite3 lib:
           sudo apt install libsqlite3-dev
 
 Compile:
-      > sudo apt install make
-      > make
-      > ./phoneBook
+      - sudo apt install make
+      - make
+      - ./phoneBook
 
 or
       gcc phoneBook.c -o phoneBook -lsqlite3
