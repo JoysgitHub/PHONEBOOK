@@ -1,7 +1,7 @@
 # PHONEBOOK
 Phonebook to manage contacts
 <br>
--This is a console application written in C with a sqlite3 database for persistence.
+-This is a console application written in C with a sqlite3 database for persistence.<br>
 -Features:<br>
         -Add Contact<br>
         -Search contact(Name or Surname)<br>
