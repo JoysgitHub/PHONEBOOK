@@ -63,6 +63,7 @@ int main(){
         // Unix-like systems (Linux, macOS, etc.)
         system("clear");
     #endif
+	/* system("cls"); */
 	while (quit) {	
 		
 		int choice = mainMenu();
@@ -152,19 +153,22 @@ int mainMenu(){
 	if (choice > 6 || choice < 1) {
 		/* system("cls"); */
 	#ifdef _WIN32
-     
+        // Windows
         system("cls");
-   	 #else
-
+    #else
+        // Unix-like systems (Linux, macOS, etc.)
         system("clear");
-  	  #endif
+    #endif
 		continue;	
 	}else {
+		/* system("cls"); */
 	#ifdef _WIN32
+        // Windows
         system("cls");
-   	 #else
-	 system("clear");
-   	 #endif
+    #else
+        // Unix-like systems (Linux, macOS, etc.)
+        system("clear");
+    #endif
 
 		return choice;
 	}
@@ -174,6 +178,30 @@ int mainMenu(){
 	
 }
 
+//Capitalise words
+
+
+char* capital(char word[]){
+
+	
+	if((word[0] >= 97 )&& (word[0]<=122) )
+	{
+		word[0] -= 32;
+	}
+
+	for(int i = 1; word[i] != '\0'; i++){
+		if((word[i] == ' ') && (word[i+1] != ' ')){
+			if((word[i+1] >= 97 )&& (word[i+1]<=122) )
+			{
+				word[i+1] -= 32;
+			}
+
+		}
+
+	}
+	return word;
+}
+
 //gets the user input for the name,surname,sex and Phonenumber and
 //adds it to the database.
 
@@ -181,6 +209,9 @@ int mainMenu(){
 void createContact(){
 	struct User u1;
 	char statment[512];
+	char name[50];
+	char surname[50];
+
 	char* sql;
 	bool loop = true;
 	int exit;
@@ -188,13 +219,23 @@ void createContact(){
 	sqlite3* db;
 	printf("New Contact:\n---------------------\n ");
 	
-	 printf("Name: ");
-    scanf("%49s", u1.name);
+	 /* printf("Name: "); */
+    /* scanf("%49s", u1.name); */
 
-    printf("Surname:");
-    scanf(" %49s", u1.surname);
+    /* printf("Surname:"); */
+    /* scanf(" %49s", u1.surname); */
 
 
+	printf("Name: ");
+	scanf("%49s", name);	
+	char* newName = capital(name);
+	memcpy(u1.name,newName,sizeof(name));
+
+	printf("Surname: ");	
+	scanf("%49s",surname);	
+	char* newsurname = capital(surname);
+	memcpy(u1.surname,newsurname,sizeof(surname));
+	
 
 	while (loop) {
 	printf("Sex: ");
@@ -272,12 +313,12 @@ int searchMenu(){
 		if (choice == 1 || choice == 2) {
 			checker = false;
 		}else {
-
+			/* system("cls"); */
 	#ifdef _WIN32
-
+        // Windows
         system("cls");
     #else
-
+        // Unix-like systems (Linux, macOS, etc.)
         system("clear");
     #endif
 			continue;
@@ -380,6 +421,8 @@ void deleteContact(){
 void updateContact(){
 	struct User u1;
 	char statment[512];
+	char name[50];
+	char surname[50];
 	char* sql;
 	bool loop = true;
 	int exit;
@@ -410,11 +453,15 @@ void updateContact(){
 
 	printf("Update Contact:\n---------------------\n ");
 	
-	 printf("Name: ");
-    scanf("%49s", u1.name);
+	printf("Name: ");
+	scanf("%49s", name);	
+	char* newName = capital(name);
+	memcpy(u1.name,newName,sizeof(name));
 
-    printf("Surname:");
-    scanf(" %49s", u1.surname);
+	printf("Surname: ");	
+	scanf("%49s",surname);	
+	char* newsurname = capital(surname);
+	memcpy(u1.surname,newsurname,sizeof(surname));
 
 
 
@@ -466,6 +513,3 @@ void updateContact(){
 	sqlite3_close(db); 
 
 }
-
-
-
