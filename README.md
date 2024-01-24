@@ -1,5 +1,5 @@
 # PHONEBOOK
-Minimalist Phonebook to manage contacts
+Phonebook to manage contacts
 
 -This is a console application written in C with a sqlite3 database for persistence.
 -Features:
