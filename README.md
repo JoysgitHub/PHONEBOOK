@@ -7,6 +7,7 @@ Phonebook to manage contacts
         -Search contact(Name or Surname)<br>
         -Print All Contacts<br>
         -Update contacts<br>
+        -Delete Contact<br>
 <br>
 Required Headers:<br>
 #include <sqlite3.h><br>
