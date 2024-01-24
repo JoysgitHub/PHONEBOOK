@@ -28,4 +28,7 @@ or
       gcc phoneBook.c -o phoneBook -lsqlite3
 
 
-(Only tested on linux and arm64)
+Tested On:
+        Windows
+        Debian Linux
+        Arm64 Linux
