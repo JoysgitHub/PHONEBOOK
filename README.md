@@ -1,34 +1,34 @@
 # PHONEBOOK
 Phonebook to manage contacts
-
+<br>
 -This is a console application written in C with a sqlite3 database for persistence.
--Features:
-        -Add Contact
-        -Search contact(Name or Surname)
-        -Print All Contacts
-        -Update contacts
+-Features:<br>
+        -Add Contact<br>
+        -Search contact(Name or Surname)<br>
+        -Print All Contacts<br>
+        -Update contacts<br>
+<br>
+Required Headers:<br>
+#include <sqlite3.h><br>
+#include <stdio.h><br>
+#include <string.h><br>
+#include <stdlib.h><br>
+#include <stdbool.h><br>
+#include <unistd.h><br>
+<br>
+Install sqlite3 lib:<br>
+          sudo apt install libsqlite3-dev<br>
 
-Required Headers:
-#include <sqlite3.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <unistd.h>
+Compile:<br>
+      - sudo apt install make<br>
+      - make<br>
+      - ./phoneBook<br>
 
-Install sqlite3 lib:
-          sudo apt install libsqlite3-dev
+or<br>
+      gcc phoneBook.c -o phoneBook -lsqlite3<br>
 
-Compile:
-      - sudo apt install make
-      - make
-      - ./phoneBook
-
-or
-      gcc phoneBook.c -o phoneBook -lsqlite3
-
-
-Tested On:
-        Windows
-        Debian Linux
-        Arm64 Linux
+<br>
+Tested On:<br>
+        Windows<br>
+        Debian Linux<br>
+        Arm64 Linux<br>
