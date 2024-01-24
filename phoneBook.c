@@ -56,7 +56,13 @@ int main(){
 		fclose(f);
 	}
 	sleep(2);
-	system("cls");
+	#ifdef _WIN32
+        // Windows
+        system("cls");
+    #else
+        // Unix-like systems (Linux, macOS, etc.)
+        system("clear");
+    #endif
 	while (quit) {	
 		
 		int choice = mainMenu();
@@ -144,10 +150,21 @@ int mainMenu(){
 	printf("> ");
 	scanf("%d", &choice);
 	if (choice > 6 || choice < 1) {
-		system("cls");
+		/* system("cls"); */
+	#ifdef _WIN32
+     
+        system("cls");
+   	 #else
+
+        system("clear");
+  	  #endif
 		continue;	
 	}else {
-		system("cls");
+	#ifdef _WIN32
+        system("cls");
+   	 #else
+	 system("clear");
+   	 #endif
 
 		return choice;
 	}
@@ -255,7 +272,14 @@ int searchMenu(){
 		if (choice == 1 || choice == 2) {
 			checker = false;
 		}else {
-			system("cls");
+
+	#ifdef _WIN32
+
+        system("cls");
+    #else
+
+        system("clear");
+    #endif
 			continue;
 		}
 
