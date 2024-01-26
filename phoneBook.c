@@ -204,7 +204,15 @@ char* capital(char word[]){
 
 //gets the user input for the name,surname,sex and Phonenumber and
 //adds it to the database.
-
+bool isValid(char *word ){
+	int valid = 11;
+	if (strlen(word) == 11) {
+		return true;	
+	}else {
+	
+		return false;
+	}
+}
 
 void createContact(){
 	struct User u1;
@@ -219,13 +227,6 @@ void createContact(){
 	sqlite3* db;
 	printf("New Contact:\n---------------------\n ");
 	
-	 /* printf("Name: "); */
-    /* scanf("%49s", u1.name); */
-
-    /* printf("Surname:"); */
-    /* scanf(" %49s", u1.surname); */
-
-
 	printf("Name: ");
 	scanf("%49s", name);	
 	char* newName = capital(name);
@@ -249,16 +250,23 @@ void createContact(){
 		continue;
 	}
 	}
-	loop = true;
-	while (loop) {
-	printf("Phone: ");
-	scanf("%s", u1.phoneNumber);
-	if (strlen(u1.phoneNumber) == 11) {
-		loop = false;
-	}else {
-		continue;
+    bool looper = true;
+	while (looper == true) {
+		printf("Phone: ");
+		scanf("%s", u1.phoneNumber);
+	
+		if (isValid(u1.phoneNumber)) {
+			looper = false;	
+		}
+
 	}
-	}
+
+/* 	do { */
+	
+/* 		printf("Phone: "); */
+/* 		scanf("%s", u1.phoneNumber); */
+/* 	}while ((strlen(u1.phoneNumber)) != 11); */
+
 	exit = sqlite3_open("contacts.db", &db); 
 	const char *insertSQL = "INSERT INTO CONTACT VALUES(NULL ,?,?,?,?);";
 	int rc = sqlite3_prepare_v2(db, insertSQL, -1, &stmt, 0);
@@ -477,17 +485,17 @@ void updateContact(){
 		continue;
 	}
 	}
-	loop = true;
-	while (loop) {
-	printf("Phone: ");
-	scanf("%s", u1.phoneNumber);
-	if (strlen(u1.phoneNumber) == 11) {
-		loop = false;
-	}else {
-		continue;
-	}
-	}
 
+	bool looper = true;
+	while (looper == true) {
+		printf("Phone: ");
+		scanf("%s", u1.phoneNumber);
+	
+		if (isValid(u1.phoneNumber)) {
+			looper = false;	
+		}
+
+	}
 
 	exit = sqlite3_open("contacts.db", &db); 
 	const char *insertSQL = "UPDATE CONTACT SET ID=?,NAME = ?,SURNAME = ?,SEX=?, PHONENUMBER=? WHERE ID=?;";
@@ -502,7 +510,6 @@ void updateContact(){
 	sqlite3_bind_text(stmt, 3,u1.surname, -1,SQLITE_STATIC);
 	sqlite3_bind_text(stmt, 4,u1.sex, -1,SQLITE_STATIC);
 	sqlite3_bind_text(stmt, 5,u1.phoneNumber, -1,SQLITE_STATIC);
-
 	sqlite3_bind_text(stmt, 6,idS, -1,SQLITE_STATIC);
 	rc = sqlite3_step(stmt);
 
@@ -513,3 +520,6 @@ void updateContact(){
 	sqlite3_close(db); 
 
 }
+
+
+
