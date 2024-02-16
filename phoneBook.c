@@ -178,8 +178,7 @@ int mainMenu(){
 	
 }
 
-//Capitalise words
-
+//Capitalise first letter of word
 
 char* capital(char word[]){
 
